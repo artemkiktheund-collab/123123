@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>VanillaSMP Store</title>
+</head>
+<body style="background:#080812;color:white;font-family:Arial;padding:40px">
+  <h1>VanillaSMP Store работает</h1>
+  <p>Если ты это видишь — Render уже нормально отдаёт сайт.</p>
+
+  <input id="nick" placeholder="Minecraft nick" style="padding:12px">
+  <button onclick="buy('archer')" style="padding:12px">BUY ARCHER</button>
+
+  <pre id="result"></pre>
+
+  <script>
+    async function buy(product) {
+      const nick = document.getElementById("nick").value.trim();
+
+      const res = await fetch("/api/create-order", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ product, nickname: nick })
+      });
+
+      const data = await res.json();
+      document.getElementById("result").textContent = JSON.stringify(data, null, 2);
+
+      if (data.paymentUrl) {
+        location.href = data.paymentUrl;
+      }
+    }
+  </script>
+</body>
+</html>
