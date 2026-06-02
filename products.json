@@ -1,14 +1,51 @@
 {
-  "name": "vanillasmp-store-backend",
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+  "archer": {
+    "name": "Archer rank",
+    "price": 100,
+    "commands": [
+      "lp user {player} parent add archer"
+    ]
   },
-  "dependencies": {
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "rcon-client": "^4.2.5"
+  "knight": {
+    "name": "Knight rank",
+    "price": 250,
+    "commands": [
+      "lp user {player} parent add knight"
+    ]
+  },
+  "wizard": {
+    "name": "Wizard rank",
+    "price": 500,
+    "commands": [
+      "lp user {player} parent add wizard"
+    ]
+  },
+  "king": {
+    "name": "King rank",
+    "price": 1000,
+    "commands": [
+      "lp user {player} parent add king"
+    ]
+  },
+  "unban": {
+    "name": "Unban",
+    "price": 300,
+    "commands": [
+      "unban {player}"
+    ]
+  },
+  "unmute": {
+    "name": "Unmute",
+    "price": 150,
+    "commands": [
+      "unmute {player}"
+    ]
+  },
+  "coins_1000": {
+    "name": "1000 Coins",
+    "price": 100,
+    "commands": [
+      "eco give {player} 1000"
+    ]
   }
 }
