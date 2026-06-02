@@ -1,7 +1,13 @@
-PORT=3000
-TEST_MODE=true
-
-# Minecraft RCON
-RCON_HOST=127.0.0.1
-RCON_PORT=25575
-RCON_PASSWORD=CHANGE_ME
+{
+  "name": "vanillasmp-store-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "rcon-client": "^4.2.5"
+  }
+}
