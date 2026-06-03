@@ -5,12 +5,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VanillaSMP Store</title>
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=7.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=7.1">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=7.1">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png?v=7.1">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png?v=7.1">
+  <link rel="shortcut icon" href="favicon.ico?v=7.1">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=7.1">
+
+
+
+
+
+
 <meta name="theme-color" content="#7b2fff">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
@@ -869,6 +876,162 @@
   .btn-token{background:var(--gold2);color:#1a0a00;border-top:4px solid #ffe066;border-left:4px solid #ffe066;border-bottom:4px solid #7a4400;border-right:4px solid #7a4400;box-shadow:4px 4px 0 #3a2000,0 0 24px rgba(255,170,0,.48)}
   .btn-token:hover{box-shadow:4px 4px 0 #3a2000,0 0 36px rgba(255,215,0,.75)}
 
+  /* ── UNBAN / UNMUTE CLEAN SECTION v6.9 ── */
+  #unban {
+    background: transparent !important;
+    position: relative;
+  }
+
+  #unban .unban-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(320px, 1fr)) !important;
+    gap: 52px !important;
+    max-width: 980px !important;
+    margin: 0 auto !important;
+    align-items: stretch !important;
+  }
+
+  #unban .unban-card {
+    padding: 38px 34px 34px !important;
+    min-height: 465px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    justify-content: flex-start !important;
+  }
+
+  #unban .unban-icon {
+    font-size: 48px !important;
+    margin: 0 0 20px !important;
+    line-height: 1 !important;
+    display: block !important;
+  }
+
+  #unban .unban-title {
+    font-size: 14px !important;
+    margin: 0 0 14px !important;
+    line-height: 1.3 !important;
+  }
+
+  #unban .unban-price {
+    font-size: 22px !important;
+    margin: 0 0 22px !important;
+    line-height: 1.3 !important;
+  }
+
+  #unban .unban-desc {
+    font-size: 7px !important;
+    color: var(--gray) !important;
+    line-height: 2.25 !important;
+    margin: 0 !important;
+    min-height: 112px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  #unban .unban-button-wrap {
+    height: 72px !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 10px 0 8px !important;
+    flex: 0 0 auto !important;
+  }
+
+  #unban .unban-button-wrap .buy-btn {
+    margin: 0 !important;
+    width: 230px !important;
+    min-height: 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  #unban .unban-note {
+    font-size: 6px !important;
+    color: var(--gray) !important;
+    opacity: 0.62 !important;
+    line-height: 2 !important;
+    margin: 0 !important;
+    min-height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+  }
+
+  @media (max-width: 760px) {
+    #unban .unban-grid {
+      grid-template-columns: 1fr !important;
+      gap: 28px !important;
+      max-width: 430px !important;
+    }
+
+    #unban .unban-card {
+      min-height: 430px !important;
+      padding: 34px 26px 30px !important;
+    }
+  }
+
+
+  /* ── CLEAN TRUE INFO CARD TEXT v7.0 ── */
+  .truth-note {
+    max-width: 880px;
+    margin: 0 auto 26px;
+    padding: 14px 18px;
+    border: 3px solid rgba(255,215,0,0.45);
+    background: rgba(255,215,0,0.06);
+    color: var(--gray);
+    font-size: 7px;
+    line-height: 2;
+    text-align: center;
+  }
+
+  .rank-body {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .perks-list {
+    min-height: 178px !important;
+  }
+
+  .perks-list li {
+    line-height: 1.9 !important;
+  }
+
+  .card-info-note {
+    color: var(--gray);
+    opacity: 0.68;
+    font-size: 6px;
+    line-height: 1.9;
+    text-align: center;
+    margin: 10px 0 0;
+    min-height: 28px;
+  }
+
+  .tokens-grid .token-card {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+
+  .token-bonus {
+    min-height: 64px !important;
+  }
+
+  .token-card .token-button-wrap {
+    margin-top: auto !important;
+  }
+
+  #why .why-card {
+    min-height: 190px;
+  }
+
 </style>
 </head>
 <body>
@@ -912,7 +1075,7 @@
     </h1>
     <p class="hero-sub">
       <span>Ranks</span> · Unbans · Kits &amp; <span>More</span><br>
-      Development store · Test mode enabled
+      Official VanillaSMP store
     </p>
     <div class="hero-btns">
       <a href="#ranks" class="btn btn-gold">▶ VIEW RANKS</a>
@@ -928,8 +1091,8 @@
         <span class="stat-label">COMMUNITY</span>
       </div>
       <div class="stat-item">
-        <span class="stat-num">TEST</span>
-        <span class="stat-label">STORE MODE</span>
+        <span class="stat-num">STORE</span>
+        <span class="stat-label">ONLINE</span>
       </div>
     </div>
   </div>
@@ -940,7 +1103,9 @@
 <section id="ranks">
   <div class="pixel-divider">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
   <h2 class="section-title" style="color:var(--gold);text-shadow:0 0 20px var(--gold2)">⚔ SERVER RANKS</h2>
-  <p class="section-sub">Choose your rank duration and currency.<br>All ranks below are temporary: 7 days or 30 days.</p>
+  <p class="section-sub">Temporary privileges only. Each rank gives its own kit and home limit. No permanent ranks.</p>
+
+  <div class="truth-note">Ranks do not give permanent access. They are temporary privileges with kit access and homes limit only. Exact kit items may be changed for server balance.</div>
 
   <div class="currency-box">
     <div class="currency-title">SELECT CURRENCY</div>
@@ -952,7 +1117,7 @@
   </div>
 
   <div class="rank-period-title">◆ 7 DAYS RANKS</div>
-  <div class="rank-period-sub">Short access. Good for testing a rank before buying a full month.</div>
+  <div class="rank-period-sub">Short access for 7 days. Good if you want to try a kit before buying a month.</div>
 
   <div class="ranks-grid">
 
@@ -967,11 +1132,11 @@
       <div class="rank-body">
         <ul class="perks-list">
           <li>Includes Archer kit</li>
-          <li>Bow-focused starter combat set</li>
-          <li>Arrows, armor and food included</li>
           <li>Max homes: 2</li>
-          <li>Green [ARCHER] chat prefix</li>
-          <li>Good for ranged PvP and survival</li>
+          <li>Temporary rank: 7 or 30 days</li>
+          <li>Green [ARCHER] prefix</li>
+          <li>Kit access works while rank is active</li>
+          <li>Issued automatically after payment</li>
         </ul>
         <button class="btn btn-emerald buy-btn" data-product="archer_week" style="width:100%;font-size:8px">BUY 7 DAYS →</button>
       </div>
@@ -989,11 +1154,11 @@
       <div class="rank-body">
         <ul class="perks-list">
           <li>Includes Knight kit</li>
-          <li>Close-combat melee kit</li>
-          <li>Sword, shield, armor and golden apples</li>
           <li>Max homes: 3</li>
-          <li>Light-blue [KNIGHT] chat prefix</li>
-          <li>Good for tanky fights and raids</li>
+          <li>Temporary rank: 7 or 30 days</li>
+          <li>Light-blue [KNIGHT] prefix</li>
+          <li>Kit access works while rank is active</li>
+          <li>Issued automatically after payment</li>
         </ul>
         <button class="btn btn-knight-lightblue buy-btn" data-product="knight_week" style="width:100%;font-size:8px">BUY 7 DAYS →</button>
       </div>
@@ -1011,11 +1176,11 @@
       <div class="rank-body">
         <ul class="perks-list">
           <li>Includes Wizard kit</li>
-          <li>Advanced magic/combat kit</li>
-          <li>Strong weapons, trident and potions</li>
           <li>Max homes: 4</li>
-          <li>Purple [WIZARD] chat prefix</li>
-          <li>Good for mobility and utility</li>
+          <li>Temporary rank: 7 or 30 days</li>
+          <li>Purple [WIZARD] prefix</li>
+          <li>Kit access works while rank is active</li>
+          <li>Issued automatically after payment</li>
         </ul>
         <button class="btn btn-purple buy-btn" data-product="wizard_week" style="width:100%;font-size:8px">BUY 7 DAYS →</button>
       </div>
@@ -1033,11 +1198,11 @@
       <div class="rank-body">
         <ul class="perks-list">
           <li>Includes King kit</li>
-          <li>Top donor kit with best rewards</li>
-          <li>Netherite/diamond gear and rare items</li>
           <li>Max homes: 5</li>
-          <li>Gold [KING] chat prefix</li>
-          <li>King bonus will be added after final balance</li>
+          <li>Temporary rank: 7 or 30 days</li>
+          <li>Gold [KING] prefix</li>
+          <li>Kit access works while rank is active</li>
+          <li>Issued automatically after payment</li>
         </ul>
         <button class="btn btn-gold buy-btn" data-product="king_week" style="width:100%;font-size:8px">BUY 7 DAYS →</button>
       </div>
@@ -1045,7 +1210,7 @@
   </div>
 
   <div class="rank-period-title">◆ 30 DAYS RANKS</div>
-  <div class="rank-period-sub">Best value for regular players. All monthly ranks use LuckPerms addtemp 30d.</div>
+  <div class="rank-period-sub">Monthly access for 30 days. Includes the selected kit and home limit.</div>
 
   <div class="ranks-grid">
 
@@ -1060,11 +1225,11 @@
       <div class="rank-body">
         <ul class="perks-list">
           <li>Includes Archer kit</li>
-          <li>Bow-focused starter combat set</li>
-          <li>Arrows, armor and food included</li>
           <li>Max homes: 2</li>
-          <li>Green [ARCHER] chat prefix</li>
-          <li>Good for ranged PvP and survival</li>
+          <li>Temporary rank: 7 or 30 days</li>
+          <li>Green [ARCHER] prefix</li>
+          <li>Kit access works while rank is active</li>
+          <li>Issued automatically after payment</li>
         </ul>
         <button class="btn btn-emerald buy-btn" data-product="archer_month" style="width:100%;font-size:8px">BUY 30 DAYS →</button>
       </div>
@@ -1082,11 +1247,11 @@
       <div class="rank-body">
         <ul class="perks-list">
           <li>Includes Knight kit</li>
-          <li>Close-combat melee kit</li>
-          <li>Sword, shield, armor and golden apples</li>
           <li>Max homes: 3</li>
-          <li>Light-blue [KNIGHT] chat prefix</li>
-          <li>Good for tanky fights and raids</li>
+          <li>Temporary rank: 7 or 30 days</li>
+          <li>Light-blue [KNIGHT] prefix</li>
+          <li>Kit access works while rank is active</li>
+          <li>Issued automatically after payment</li>
         </ul>
         <button class="btn btn-knight-lightblue buy-btn" data-product="knight_month" style="width:100%;font-size:8px">BUY 30 DAYS →</button>
       </div>
@@ -1104,11 +1269,11 @@
       <div class="rank-body">
         <ul class="perks-list">
           <li>Includes Wizard kit</li>
-          <li>Advanced magic/combat kit</li>
-          <li>Strong weapons, trident and potions</li>
           <li>Max homes: 4</li>
-          <li>Purple [WIZARD] chat prefix</li>
-          <li>Good for mobility and utility</li>
+          <li>Temporary rank: 7 or 30 days</li>
+          <li>Purple [WIZARD] prefix</li>
+          <li>Kit access works while rank is active</li>
+          <li>Issued automatically after payment</li>
         </ul>
         <button class="btn btn-purple buy-btn" data-product="wizard_month" style="width:100%;font-size:8px">BUY 30 DAYS →</button>
       </div>
@@ -1126,11 +1291,11 @@
       <div class="rank-body">
         <ul class="perks-list">
           <li>Includes King kit</li>
-          <li>Top donor kit with best rewards</li>
-          <li>Netherite/diamond gear and rare items</li>
           <li>Max homes: 5</li>
-          <li>Gold [KING] chat prefix</li>
-          <li>King bonus will be added after final balance</li>
+          <li>Temporary rank: 7 or 30 days</li>
+          <li>Gold [KING] prefix</li>
+          <li>Kit access works while rank is active</li>
+          <li>Issued automatically after payment</li>
         </ul>
         <button class="btn btn-gold buy-btn" data-product="king_month" style="width:100%;font-size:8px">BUY 30 DAYS →</button>
       </div>
@@ -1140,11 +1305,12 @@
 
 
 
+
 <!-- TOKENS -->
 <section id="tokens">
   <div class="pixel-divider">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
   <h2 class="section-title" style="color:var(--gold);text-shadow:0 0 20px var(--gold2)">✦ SERVER TOKENS</h2>
-  <p class="section-sub">Buy server tokens directly. Rate: 1 token = $1. Prices are rounded for each currency.</p>
+  <p class="section-sub">Buy server tokens directly. Rate: 1 token = $1. Issued automatically after payment.</p>
   <div class="tokens-grid">
 
     <div class="px-card token-card">
@@ -1153,8 +1319,8 @@
       <div class="token-icon">🪙</div>
       <div class="token-name">1 TOKEN</div>
       <div class="token-price price" data-usd="1" data-uah="45" data-rub="75">$1</div>
-      <div class="token-bonus">Small token top-up.</div>
-      <div style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_1" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
+      <div class="token-bonus">1 token is added to your account after payment.<br>Rate: 1 token = $1.</div>
+      <div class="token-button-wrap" style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_1" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
     </div>
 
     <div class="px-card token-card">
@@ -1163,8 +1329,8 @@
       <div class="token-icon">🪙</div>
       <div class="token-name">5 TOKENS</div>
       <div class="token-price price" data-usd="5" data-uah="225" data-rub="375">$5</div>
-      <div class="token-bonus">Basic token pack.</div>
-      <div style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_5" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
+      <div class="token-bonus">5 server tokens. Issued automatically.<br>Rate: 1 token = $1.</div>
+      <div class="token-button-wrap" style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_5" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
     </div>
 
     <div class="px-card token-card">
@@ -1173,8 +1339,8 @@
       <div class="token-icon">💰</div>
       <div class="token-name">10 TOKENS</div>
       <div class="token-price price" data-usd="10" data-uah="449" data-rub="749">$10</div>
-      <div class="token-bonus">Good pack for regular players.</div>
-      <div style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_10" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
+      <div class="token-bonus">10 server tokens. Issued automatically.<br>Rate: 1 token = $1.</div>
+      <div class="token-button-wrap" style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_10" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
     </div>
 
     <div class="px-card token-card">
@@ -1183,8 +1349,8 @@
       <div class="token-icon">💎</div>
       <div class="token-name">25 TOKENS</div>
       <div class="token-price price" data-usd="25" data-uah="1099" data-rub="1849">$25</div>
-      <div class="token-bonus">Large token pack.</div>
-      <div style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_25" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
+      <div class="token-bonus">25 server tokens. Issued automatically.<br>Rate: 1 token = $1.</div>
+      <div class="token-button-wrap" style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_25" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
     </div>
 
     <div class="px-card token-card">
@@ -1193,8 +1359,8 @@
       <div class="token-icon">👑</div>
       <div class="token-name">50 TOKENS</div>
       <div class="token-price price" data-usd="50" data-uah="2199" data-rub="3699">$50</div>
-      <div class="token-bonus">Best pack for active players.</div>
-      <div style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_50" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
+      <div class="token-bonus">50 server tokens. Issued automatically.<br>Rate: 1 token = $1.</div>
+      <div class="token-button-wrap" style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_50" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
     </div>
 
     <div class="px-card token-card">
@@ -1203,60 +1369,64 @@
       <div class="token-icon">🏆</div>
       <div class="token-name">100 TOKENS</div>
       <div class="token-price price" data-usd="100" data-uah="4399" data-rub="7399">$100</div>
-      <div class="token-bonus">Maximum token pack.</div>
-      <div style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_100" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
+      <div class="token-bonus">100 server tokens. Issued automatically.<br>Rate: 1 token = $1.</div>
+      <div class="token-button-wrap" style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_100" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
     </div>
   </div>
 </section>
+
+
+
 
 <!-- UNBAN / UNMUTE -->
 <section id="unban">
   <div class="pixel-divider">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
   <h2 class="section-title" style="color:var(--red);text-shadow:0 0 20px var(--red)">⚖ UNBAN / UNMUTE</h2>
-  <p class="section-sub">Unban and unmute are issued automatically right after payment. No waiting, no 24-hour review.</p>
+  <p class="section-sub">Unban and unmute are issued automatically right after payment. No waiting, no manual review.</p>
 
   <div class="unban-grid">
-
-    <!-- UNBAN -->
     <div class="px-card unban-card unban-c">
-      <div class="corner-tl" style="border-color:var(--red)"></div>
-      <div class="corner-tr" style="border-color:var(--red)"></div>
-      <div class="corner-bl" style="border-color:var(--red)"></div>
-      <div class="corner-br" style="border-color:var(--red)"></div>
+      <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
       <span class="unban-icon">🔓</span>
       <div class="unban-title">UNBAN</div>
-      <div class="unban-price price" data-usd="6.99" data-uah="309" data-rub="499">309 ₴</div>
-      <p class="unban-desc">
+      <div class="unban-price price" data-usd="6.99" data-uah="309" data-rub="499">$6.99</div>
+      <div class="unban-desc">
         Banned from VanillaSMP?<br>
-        Purchase an unban token to restore<br>
-        your access. One-time use per account.<br>
-        Does not apply to permanent cheating bans.
-      </p>
-      <button class="btn btn-red buy-btn" data-product="unban" style="font-size:8px">PURCHASE UNBAN</button>
-      <p class="unban-note">⚠ Cheating / hacking bans are non-refundable<br>and may be re-issued if behaviour continues.</p>
+        Purchase unban to restore<br>
+        your access instantly.<br>
+        Issued automatically.
+      </div>
+      <div class="unban-button-wrap">
+        <button class="btn btn-red buy-btn" data-product="unban">PURCHASE UNBAN</button>
+      </div>
+      <div class="unban-note">
+        ▲ Delivered instantly after payment<br>
+        and may be removed for future rule breaks.
+      </div>
     </div>
 
-    <!-- UNMUTE -->
     <div class="px-card unban-card unmute-c">
-      <div class="corner-tl" style="border-color:var(--blue)"></div>
-      <div class="corner-tr" style="border-color:var(--blue)"></div>
-      <div class="corner-bl" style="border-color:var(--blue)"></div>
-      <div class="corner-br" style="border-color:var(--blue)"></div>
+      <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
       <span class="unban-icon">🔊</span>
-      <div class="unban-title" style="color:var(--blue);text-shadow:0 0 15px var(--blue)">UNMUTE</div>
-      <div class="unban-price price" data-usd="1.99" data-uah="89" data-rub="149">89 ₴</div>
-      <p class="unban-desc">
+      <div class="unban-title">UNMUTE</div>
+      <div class="unban-price price" data-usd="1.99" data-uah="89" data-rub="149">$1.99</div>
+      <div class="unban-desc">
         Muted in chat?<br>
-        Restore your voice on VanillaSMP.<br>
-        Applied within 1 hour of purchase.<br>
-        Includes global chat and trade chat.
-      </p>
-      <button class="btn btn-blue buy-btn" data-product="unmute" style="font-size:8px">PURCHASE UNMUTE</button>
-      <p class="unban-note">⚠ Repeated mute offences may result<br>in a longer cooldown before re-purchase.</p>
+        Purchase unmute to restore<br>
+        your chat access instantly.<br>
+        Issued automatically.
+      </div>
+      <div class="unban-button-wrap">
+        <button class="btn btn-blue buy-btn" data-product="unmute">PURCHASE UNMUTE</button>
+      </div>
+      <div class="unban-note">
+        ▲ Delivered instantly after payment<br>
+        and may be removed for future rule breaks.
+      </div>
     </div>
-
   </div>
 </section>
+
 
 <!-- WHY BUY -->
 <section id="why">
@@ -1272,18 +1442,18 @@
     </div>
     <div class="why-card">
       <span class="why-icon">🔒</span>
-      <div class="why-title">SECURE PAYMENTS</div>
-      <p class="why-desc">Payment provider will be connected later. Test checkout is currently enabled.</p>
+      <div class="why-title">PAYMENT SYSTEM</div>
+      <p class="why-desc">Payment provider will be connected later. Payment checkout is currently enabled.</p>
     </div>
     <div class="why-card">
       <span class="why-icon">❤</span>
-      <div class="why-title">SUPPORTS THE SERVER</div>
-      <p class="why-desc">Future donations will support hosting, development, plugins and server maintenance.</p>
+      <div class="why-title">DISCORD SUPPORTS THE SERVER</div>
+      <p class="why-desc">Purchases support server hosting, plugin setup, official and maintenance.</p>
     </div>
     <div class="why-card">
       <span class="why-icon">🎮</span>
-      <div class="why-title">PERMANENT PERKS</div>
-      <p class="why-desc">All ranks are lifetime — no subscriptions, no renewals. Buy once and enjoy your perks forever on VanillaSMP.</p>
+      <div class="why-title">TEMPORARY RANKS</div>
+      <p class="why-desc">All ranks are temporary. Choose 7 days or 30 days, then renew later if you want to keep the rank.</p>
     </div>
   </div>
 </section>
@@ -1314,7 +1484,7 @@
     <input class="purchase-input" id="mcNick" maxlength="16" placeholder="Your nickname">
 
     <div class="purchase-info">
-      Test mode is enabled. No real payment is charged yet. The backend will only print the Minecraft command in Render logs.
+      Payment checkout is being prepared. You will be redirected to the payment page.
     </div>
 
     <div class="purchase-error" id="purchaseError"></div>
@@ -1344,7 +1514,7 @@
       </ul>
     </div>
     <div>
-      <div class="footer-col-title">SUPPORT</div>
+      <div class="footer-col-title">DISCORD SUPPORT</div>
       <ul class="footer-links">
         <li><a href="https://discord.gg/6BZf7naQKR" target="_blank" rel="noopener noreferrer">Discord Support</a></li>
         <li><a href="support.html">Submit a Ticket</a></li>
@@ -1520,7 +1690,7 @@
   let selectedProduct = null;
 
   function validMinecraftNick(name) {
-    return /^[a-zA-Z0-9_]{3,16}$/.test(name);
+    return /^[a-zA-Z0-9_]{3,16}$/.live(name);
   }
 
   document.querySelectorAll(".buy-btn").forEach(btn => {
