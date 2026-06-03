@@ -150,7 +150,7 @@
       "RUB": 75
     },
     "commands": [
-      "tags give {player} 1"
+      "vtagtokens give {player} 1"
     ],
     "description": "Server tokens. Issued automatically after payment."
   },
@@ -163,7 +163,7 @@
       "RUB": 375
     },
     "commands": [
-      "tags give {player} 5"
+      "vtagtokens give {player} 5"
     ],
     "description": "Server tokens. Issued automatically after payment."
   },
@@ -176,7 +176,7 @@
       "RUB": 749
     },
     "commands": [
-      "tags give {player} 10"
+      "vtagtokens give {player} 10"
     ],
     "description": "Server tokens. Issued automatically after payment."
   },
@@ -189,7 +189,7 @@
       "RUB": 1849
     },
     "commands": [
-      "tags give {player} 25"
+      "vtagtokens give {player} 25"
     ],
     "description": "Server tokens. Issued automatically after payment."
   },
@@ -202,7 +202,7 @@
       "RUB": 3699
     },
     "commands": [
-      "tags give {player} 50"
+      "vtagtokens give {player} 50"
     ],
     "description": "Server tokens. Issued automatically after payment."
   },
@@ -215,7 +215,7 @@
       "RUB": 7399
     },
     "commands": [
-      "tags give {player} 100"
+      "vtagtokens give {player} 100"
     ],
     "description": "Server tokens. Issued automatically after payment."
   }
