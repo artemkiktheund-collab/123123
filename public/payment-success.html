@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VanillaSMP Success</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+body{min-height:100vh;margin:0;background:radial-gradient(circle at 70% 20%,rgba(0,255,136,.2),transparent 30%),linear-gradient(180deg,#04030a,#080719);color:#f2f0ff;font-family:'Press Start 2P',monospace;display:flex;align-items:center;justify-content:center;padding:24px}
+.panel{width:min(820px,100%);background:rgba(17,23,47,.94);border:4px solid #00ff88;box-shadow:8px 8px 0 #000,0 0 40px rgba(0,255,136,.35);padding:34px;text-align:center}
+.logo{font-size:clamp(18px,4vw,34px);line-height:1.6;margin-bottom:18px}.yellow{color:#ffd700}.purple{color:#a855f7}.store{display:block;color:#fff}
+.badge{display:inline-block;border:2px solid #00ff88;color:#00ff88;background:rgba(0,255,136,.08);padding:12px 16px;font-size:8px;line-height:1.8;margin:18px 0}
+.text{font-size:9px;line-height:2;color:#9ba1c6}.btn{display:inline-block;margin-top:22px;text-decoration:none;background:#00cc6a;color:#001a0d;padding:16px 18px;font-size:9px;border-top:4px solid #00ff88;border-left:4px solid #00ff88;border-bottom:4px solid #006633;border-right:4px solid #006633;box-shadow:4px 4px 0 #003318}
+</style>
+</head>
+<body>
+<main class="panel">
+  <div class="logo"><span class="yellow">VANILLA</span><span class="purple">SMP</span><span class="store">SUCCESS</span></div>
+  <div style="font-size:58px">✅</div>
+  <div class="badge">PAYMENT SUCCESSFUL</div>
+  <div class="text">Your payment was accepted. The product should be issued automatically.<br>Order ID: <span id="order">loading...</span></div>
+  <a class="btn" href="/">BACK TO STORE</a>
+</main>
+<script>document.getElementById("order").textContent = new URLSearchParams(location.search).get("order") || "unknown";</script>
+</body>
+</html>
