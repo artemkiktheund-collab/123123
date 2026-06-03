@@ -1,51 +1,206 @@
 {
-  "archer": {
-    "name": "Archer rank",
-    "price": 100,
+  "archer_week": {
+    "name": "Archer — 7 days",
+    "period": "7 days",
+    "prices": {
+      "USD": 1.99,
+      "UAH": 89,
+      "RUB": 149
+    },
     "commands": [
-      "lp user {player} parent add archer"
+      "lp user {player} parent addtemp archer 7d"
     ]
   },
-  "knight": {
-    "name": "Knight rank",
-    "price": 250,
+  "knight_week": {
+    "name": "Knight — 7 days",
+    "period": "7 days",
+    "prices": {
+      "USD": 3.99,
+      "UAH": 179,
+      "RUB": 299
+    },
     "commands": [
-      "lp user {player} parent add knight"
+      "lp user {player} parent addtemp knight 7d"
     ]
   },
-  "wizard": {
-    "name": "Wizard rank",
-    "price": 500,
+  "wizard_week": {
+    "name": "Wizard — 7 days",
+    "period": "7 days",
+    "prices": {
+      "USD": 6.99,
+      "UAH": 309,
+      "RUB": 549
+    },
     "commands": [
-      "lp user {player} parent add wizard"
+      "lp user {player} parent addtemp wizard 7d"
     ]
   },
-  "king": {
-    "name": "King rank",
-    "price": 1000,
+  "king_week": {
+    "name": "King — 7 days",
+    "period": "7 days",
+    "prices": {
+      "USD": 12.99,
+      "UAH": 579,
+      "RUB": 999
+    },
     "commands": [
-      "lp user {player} parent add king"
+      "lp user {player} parent addtemp king 7d"
+    ]
+  },
+  "archer_month": {
+    "name": "Archer — 30 days",
+    "period": "30 days",
+    "prices": {
+      "USD": 3.99,
+      "UAH": 179,
+      "RUB": 299
+    },
+    "commands": [
+      "lp user {player} parent addtemp archer 30d"
+    ]
+  },
+  "knight_month": {
+    "name": "Knight — 30 days",
+    "period": "30 days",
+    "prices": {
+      "USD": 6.99,
+      "UAH": 309,
+      "RUB": 549
+    },
+    "commands": [
+      "lp user {player} parent addtemp knight 30d"
+    ]
+  },
+  "wizard_month": {
+    "name": "Wizard — 30 days",
+    "period": "30 days",
+    "prices": {
+      "USD": 11.99,
+      "UAH": 529,
+      "RUB": 899
+    },
+    "commands": [
+      "lp user {player} parent addtemp wizard 30d"
+    ]
+  },
+  "king_month": {
+    "name": "King — 30 days",
+    "period": "30 days",
+    "prices": {
+      "USD": 19.99,
+      "UAH": 889,
+      "RUB": 1499
+    },
+    "commands": [
+      "lp user {player} parent addtemp king 30d"
     ]
   },
   "unban": {
     "name": "Unban",
-    "price": 300,
+    "period": "one-time",
+    "prices": {
+      "USD": 6.99,
+      "UAH": 309,
+      "RUB": 499
+    },
     "commands": [
       "unban {player}"
     ]
   },
   "unmute": {
     "name": "Unmute",
-    "price": 150,
+    "period": "one-time",
+    "prices": {
+      "USD": 1.99,
+      "UAH": 89,
+      "RUB": 149
+    },
     "commands": [
       "unmute {player}"
     ]
   },
   "coins_1000": {
     "name": "1000 Coins",
-    "price": 100,
+    "period": "one-time",
+    "prices": {
+      "USD": 1.99,
+      "UAH": 89,
+      "RUB": 149
+    },
     "commands": [
       "eco give {player} 1000"
+    ]
+  },
+  "tokens_1": {
+    "name": "1 Token",
+    "period": "one-time",
+    "prices": {
+      "USD": 1,
+      "UAH": 45,
+      "RUB": 75
+    },
+    "commands": [
+      "tokens give {player} 1"
+    ]
+  },
+  "tokens_5": {
+    "name": "5 Tokens",
+    "period": "one-time",
+    "prices": {
+      "USD": 5,
+      "UAH": 225,
+      "RUB": 375
+    },
+    "commands": [
+      "tokens give {player} 5"
+    ]
+  },
+  "tokens_10": {
+    "name": "10 Tokens",
+    "period": "one-time",
+    "prices": {
+      "USD": 10,
+      "UAH": 449,
+      "RUB": 749
+    },
+    "commands": [
+      "tokens give {player} 10"
+    ]
+  },
+  "tokens_25": {
+    "name": "25 Tokens",
+    "period": "one-time",
+    "prices": {
+      "USD": 25,
+      "UAH": 1099,
+      "RUB": 1849
+    },
+    "commands": [
+      "tokens give {player} 25"
+    ]
+  },
+  "tokens_50": {
+    "name": "50 Tokens",
+    "period": "one-time",
+    "prices": {
+      "USD": 50,
+      "UAH": 2199,
+      "RUB": 3699
+    },
+    "commands": [
+      "tokens give {player} 50"
+    ]
+  },
+  "tokens_100": {
+    "name": "100 Tokens",
+    "period": "one-time",
+    "prices": {
+      "USD": 100,
+      "UAH": 4399,
+      "RUB": 7399
+    },
+    "commands": [
+      "tokens give {player} 100"
     ]
   }
 }
