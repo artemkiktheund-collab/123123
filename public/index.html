@@ -573,20 +573,313 @@
     margin-top: 14px;
   }
 
+
+  /* ── CURRENCY SWITCHER ── */
+  .currency-box {
+    max-width: 900px;
+    margin: 0 auto 34px;
+    text-align: center;
+    background: rgba(10,10,15,0.55);
+    border: 4px solid var(--border);
+    padding: 18px;
+  }
+  .currency-title {
+    font-size: 8px;
+    color: var(--gray);
+    margin-bottom: 14px;
+    letter-spacing: 2px;
+  }
+  .currency-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .currency-btn {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    cursor: pointer;
+    background: var(--stone);
+    color: var(--gray);
+    border: 3px solid var(--border);
+    padding: 10px 14px;
+  }
+  .currency-btn.active {
+    color: #001a0d;
+    background: var(--emerald);
+    border-color: var(--emerald);
+    box-shadow: 0 0 16px rgba(0,255,136,0.45);
+  }
+  .rank-period-title {
+    max-width: 1100px;
+    margin: 56px auto 22px;
+    font-size: 13px;
+    line-height: 1.7;
+    letter-spacing: 2px;
+    text-align: center;
+    color: var(--emerald);
+    text-shadow: 0 0 14px rgba(0,255,136,0.55);
+  }
+  .rank-period-sub {
+    text-align: center;
+    color: var(--gray);
+    font-size: 7px;
+    line-height: 2;
+    margin-bottom: 22px;
+  }
+  .rank-price small {
+    display: block;
+    margin-top: 8px;
+    font-size: 6px;
+    color: var(--gray);
+  }
+  .rank-card .duration-badge {
+    position: absolute;
+    left: 12px;
+    top: -2px;
+    font-size: 6px;
+    padding: 4px 8px;
+    background: var(--stone);
+    color: var(--emerald);
+    border-bottom: 3px solid #003318;
+    border-right: 3px solid #003318;
+  }
+
+
+  /* ── SMOOTH PRICE TRANSITION ── */
+  .rank-price.price {
+    transition:
+      opacity 0.22s ease,
+      transform 0.22s ease,
+      filter 0.22s ease,
+      text-shadow 0.22s ease;
+    will-change: opacity, transform, filter;
+  }
+
+  .rank-price.price.price-changing {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+    filter: blur(2px);
+  }
+
+  .currency-btn {
+    transition:
+      transform 0.14s ease,
+      box-shadow 0.18s ease,
+      background 0.18s ease,
+      color 0.18s ease,
+      border-color 0.18s ease;
+  }
+
+  .currency-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .currency-btn:active {
+    transform: translateY(2px) scale(0.98);
+  }
+
+  .currency-btn.active {
+    animation: currency-pop 0.24s ease;
+  }
+
+  @keyframes currency-pop {
+    0% { transform: scale(0.96); }
+    65% { transform: scale(1.06); }
+    100% { transform: scale(1); }
+  }
+
+
+  /* ── HARD FIX: REAL SMOOTH CURRENCY FADE ── */
+  .rank-price.price {
+    transition: opacity 260ms ease, transform 260ms ease, filter 260ms ease !important;
+    will-change: opacity, transform, filter;
+  }
+
+  .rank-price.price.currency-fade-out {
+    opacity: 0 !important;
+    transform: translateY(10px) scale(0.96) !important;
+    filter: blur(3px) !important;
+  }
+
+  .currency-btn {
+    transition: transform 180ms ease, box-shadow 220ms ease, background 220ms ease, color 220ms ease, border-color 220ms ease !important;
+  }
+
+  .currency-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .currency-btn.active {
+    animation: currencySelectPop 280ms ease;
+  }
+
+  @keyframes currencySelectPop {
+    0% { transform: scale(0.94); }
+    60% { transform: scale(1.07); }
+    100% { transform: scale(1); }
+  }
+
+
+  /* ── PRICE TRANSITION FOR ALL STORE PRICES ── */
+  .price {
+    transition: opacity 260ms ease, transform 260ms ease, filter 260ms ease !important;
+    will-change: opacity, transform, filter;
+  }
+  .price.currency-fade-out,
+  .price.price-changing {
+    opacity: 0 !important;
+    transform: translateY(10px) scale(0.96) !important;
+    filter: blur(3px) !important;
+  }
+
+  /* ── KNIGHT LIGHT BLUE THEME OVERRIDE ── */
+  .rank-card.knight {
+    border-color: #8fd8ff !important;
+  }
+  .rank-card.knight:hover {
+    box-shadow: 0 0 30px rgba(143,216,255,0.55), inset 0 0 30px rgba(143,216,255,0.08) !important;
+    border-color: #c8efff !important;
+  }
+  .knight .rank-name {
+    color: #bfeeff !important;
+    text-shadow: 0 0 12px #5ecbff !important;
+  }
+  .rank-card.knight .perks-list li::before {
+    color: #8fd8ff !important;
+  }
+  .rank-card.knight .corner-tl,
+  .rank-card.knight .corner-tr,
+  .rank-card.knight .corner-bl,
+  .rank-card.knight .corner-br {
+    border-color: #8fd8ff !important;
+  }
+  .btn-knight-lightblue {
+    background: #8fd8ff;
+    color: #06131c;
+    border-top: 4px solid #d7f5ff;
+    border-left: 4px solid #d7f5ff;
+    border-bottom: 4px solid #357ea8;
+    border-right: 4px solid #357ea8;
+    box-shadow: 4px 4px 0 #12384f, 0 0 20px rgba(143,216,255,0.38);
+  }
+  .btn-knight-lightblue:hover {
+    box-shadow: 4px 4px 0 #12384f, 0 0 36px rgba(143,216,255,0.75);
+  }
+
+
+  /* ── WORKING SCROLL PARALLAX COSMOS BACKGROUND ── */
+  html {
+    background: #04030a !important;
+  }
+
+  body {
+    background: transparent !important;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  #scroll-cosmos-bg {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    display: block !important;
+    object-fit: cover !important;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    z-index: 0 !important;
+    pointer-events: none !important;
+    background: #04030a !important;
+  }
+
+  #scroll-cosmos-veil {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+    background:
+      radial-gradient(circle at center, rgba(4,3,10,0.00) 0%, rgba(4,3,10,0.18) 58%, rgba(4,3,10,0.48) 100%),
+      linear-gradient(180deg, rgba(4,3,10,0.04) 0%, rgba(4,3,10,0.15) 45%, rgba(8,6,22,0.42) 100%) !important;
+  }
+
+  nav,
+  #hero,
+  #ranks,
+  #unban,
+  #why,
+  #discord,
+  footer,
+  #purchaseModal,
+  .modal,
+  .toast {
+    position: relative;
+    z-index: 3 !important;
+  }
+
+  #hero,
+  #ranks,
+  #unban,
+  #why,
+  #discord {
+    background: transparent !important;
+  }
+
+  nav {
+    background: rgba(10,10,15,0.82) !important;
+    backdrop-filter: blur(5px);
+  }
+
+  footer {
+    background: rgba(5,5,15,0.86) !important;
+  }
+
+  .px-card,
+  .why-card,
+  .discord-card,
+  .currency-box,
+  .modal-content {
+    background: rgba(22,33,62,0.88) !important;
+    backdrop-filter: blur(4px);
+  }
+
+  .cave-bg,
+  .cave-terrain,
+  .ore {
+    display: none !important;
+  }
+
+
+  /* ── TOKENS SECTION ── */
+  #tokens { background: transparent !important; position: relative; }
+  .tokens-grid{max-width:1120px;margin:28px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+  .token-card{border-color:var(--gold2)!important;background:rgba(22,33,62,.88)!important;overflow:hidden}
+  .token-card:hover{border-color:var(--gold)!important;box-shadow:0 0 30px rgba(255,215,0,.42),inset 0 0 28px rgba(255,215,0,.05)!important}
+  .token-icon{font-size:34px;text-align:center;margin:22px 0 12px;filter:drop-shadow(0 0 14px rgba(255,215,0,.55))}
+  .token-name{font-size:13px;line-height:1.6;text-align:center;color:var(--gold);text-shadow:0 0 12px rgba(255,215,0,.65);margin-bottom:12px}
+  .token-price{font-size:18px;text-align:center;color:var(--white);margin-bottom:16px;text-shadow:0 0 10px rgba(255,255,255,.28)}
+  .token-bonus{font-size:7px;line-height:1.8;color:var(--gray);text-align:center;border-top:2px solid rgba(255,215,0,.25);padding:12px 12px 0;min-height:48px}
+  .btn-token{background:var(--gold2);color:#1a0a00;border-top:4px solid #ffe066;border-left:4px solid #ffe066;border-bottom:4px solid #7a4400;border-right:4px solid #7a4400;box-shadow:4px 4px 0 #3a2000,0 0 24px rgba(255,170,0,.48)}
+  .btn-token:hover{box-shadow:4px 4px 0 #3a2000,0 0 36px rgba(255,215,0,.75)}
+
 </style>
 </head>
 <body>
+<canvas id="scroll-cosmos-bg" aria-hidden="true"></canvas>
+<div id="scroll-cosmos-veil" aria-hidden="true"></div>
+
 
 <!-- NAV -->
 <nav>
   <div class="nav-logo">⚔ VANILLASMP</div>
   <div class="nav-links">
     <a href="#ranks">RANKS</a>
+    <a href="#tokens">TOKENS</a>
     <a href="#unban">UNBAN</a>
     <a href="#why">INFO</a>
     <a href="#discord">DISCORD</a>
   </div>
-  <div class="nav-ip">play.vanillasmp.net</div>
+  <div class="nav-ip">vanillasmp.space</div>
 </nav>
 
 <!-- HERO -->
@@ -612,7 +905,7 @@
     </h1>
     <p class="hero-sub">
       <span>Ranks</span> · Unbans · Kits &amp; <span>More</span><br>
-      Support the server. Rule the game.
+      Development store · Test mode enabled
     </p>
     <div class="hero-btns">
       <a href="#ranks" class="btn btn-gold">▶ VIEW RANKS</a>
@@ -620,126 +913,292 @@
     </div>
     <div class="hero-stats">
       <div class="stat-item">
-        <span class="stat-num">2,841</span>
-        <span class="stat-label">PLAYERS ONLINE</span>
+        <span class="stat-num" id="onlinePlayers">...</span>
+        <span class="stat-label" id="onlineLabel">CHECKING ONLINE</span>
       </div>
       <div class="stat-item">
-        <span class="stat-num">47K+</span>
+        <span class="stat-num">SOON</span>
         <span class="stat-label">COMMUNITY</span>
       </div>
       <div class="stat-item">
-        <span class="stat-num">99.9%</span>
-        <span class="stat-label">UPTIME</span>
+        <span class="stat-num">TEST</span>
+        <span class="stat-label">STORE MODE</span>
       </div>
     </div>
   </div>
 </section>
 
+
 <!-- RANKS -->
 <section id="ranks">
   <div class="pixel-divider">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
   <h2 class="section-title" style="color:var(--gold);text-shadow:0 0 20px var(--gold2)">⚔ SERVER RANKS</h2>
-  <p class="section-sub">Choose your rank. Command your destiny.<br>All ranks are permanent and applied instantly.</p>
+  <p class="section-sub">Choose your rank duration and currency.<br>All ranks below are temporary: 7 days or 30 days.</p>
+
+  <div class="currency-box">
+    <div class="currency-title">SELECT CURRENCY</div>
+    <div class="currency-buttons">
+      <button type="button" class="currency-btn active" data-currency="UAH">₴ UAH</button>
+      <button type="button" class="currency-btn" data-currency="RUB">₽ RUB</button>
+      <button type="button" class="currency-btn" data-currency="USD">$ USD</button>
+    </div>
+  </div>
+
+  <div class="rank-period-title">◆ 7 DAYS RANKS</div>
+  <div class="rank-period-sub">Short access. Good for testing a rank before buying a full month.</div>
 
   <div class="ranks-grid">
 
-    <!-- ARCHER -->
     <div class="px-card rank-card archer">
-      <div class="corner-tl"></div><div class="corner-tr"></div>
-      <div class="corner-bl"></div><div class="corner-br"></div>
+      <div class="duration-badge">7 DAYS</div>
+      <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
       <div class="rank-header">
         <div class="rank-icon">🏹</div>
         <div class="rank-name">[ARCHER]</div>
-        <div class="rank-price">100 TOK</div>
+        <div class="rank-price price" data-usd="1.99" data-uah="89" data-rub="149">89 ₴<small>7 days</small></div>
       </div>
       <div class="rank-body">
         <ul class="perks-list">
+          <li>Includes Archer kit</li>
+          <li>Bow-focused starter combat set</li>
+          <li>Arrows, armor and food included</li>
+          <li>Max homes: 2</li>
           <li>Green [ARCHER] chat prefix</li>
-          <li>3 /sethome locations</li>
-          <li>Access to /kit archer</li>
-          <li>Color chat (&amp;a, &amp;b, &amp;e)</li>
-          <li>/nick command</li>
-          <li>Join full server</li>
+          <li>Good for ranged PvP and survival</li>
         </ul>
-        <button class="btn btn-emerald buy-btn" data-product="archer" style="width:100%;font-size:8px">BUY NOW →</button>
+        <button class="btn btn-emerald buy-btn" data-product="archer_week" style="width:100%;font-size:8px">BUY 7 DAYS →</button>
       </div>
     </div>
 
-    <!-- KNIGHT -->
     <div class="px-card rank-card knight">
-      <div class="corner-tl"></div><div class="corner-tr"></div>
-      <div class="corner-bl"></div><div class="corner-br"></div>
+      <div class="duration-badge">7 DAYS</div>
+      <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
       <div class="rank-badge popular">POPULAR</div>
       <div class="rank-header">
         <div class="rank-icon">🛡</div>
         <div class="rank-name">[KNIGHT]</div>
-        <div class="rank-price">250 TOK</div>
+        <div class="rank-price price" data-usd="3.99" data-uah="179" data-rub="299">179 ₴<small>7 days</small></div>
       </div>
       <div class="rank-body">
         <ul class="perks-list">
-          <li>Blue [KNIGHT] chat prefix</li>
-          <li>6 /sethome locations</li>
-          <li>Access to /kit knight</li>
-          <li>Full color chat support</li>
-          <li>/fly in creative mode</li>
-          <li>/heal &amp; /feed commands</li>
-          <li>2x McMMO XP boost</li>
+          <li>Includes Knight kit</li>
+          <li>Close-combat melee kit</li>
+          <li>Sword, shield, armor and golden apples</li>
+          <li>Max homes: 3</li>
+          <li>Light-blue [KNIGHT] chat prefix</li>
+          <li>Good for tanky fights and raids</li>
         </ul>
-        <button class="btn btn-blue buy-btn" data-product="knight" style="width:100%;font-size:8px">BUY NOW →</button>
+        <button class="btn btn-knight-lightblue buy-btn" data-product="knight_week" style="width:100%;font-size:8px">BUY 7 DAYS →</button>
       </div>
     </div>
 
-    <!-- WIZARD -->
     <div class="px-card rank-card wizard">
-      <div class="corner-tl"></div><div class="corner-tr"></div>
-      <div class="corner-bl"></div><div class="corner-br"></div>
-      <div class="rank-badge popular" style="background:var(--purple);border-bottom-color:#3d1780;border-left-color:#3d1780">HOT 🔥</div>
+      <div class="duration-badge">7 DAYS</div>
+      <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+      <div class="rank-badge popular">HOT 🔥</div>
       <div class="rank-header">
         <div class="rank-icon">🧙</div>
         <div class="rank-name">[WIZARD]</div>
-        <div class="rank-price">500 TOK</div>
+        <div class="rank-price price" data-usd="6.99" data-uah="309" data-rub="549">309 ₴<small>7 days</small></div>
       </div>
       <div class="rank-body">
         <ul class="perks-list">
+          <li>Includes Wizard kit</li>
+          <li>Advanced magic/combat kit</li>
+          <li>Strong weapons, trident and potions</li>
+          <li>Max homes: 4</li>
           <li>Purple [WIZARD] chat prefix</li>
-          <li>10 /sethome locations</li>
-          <li>Access to /kit wizard</li>
-          <li>/fly everywhere</li>
-          <li>/tp instant teleport</li>
-          <li>3x McMMO XP boost</li>
-          <li>Custom join message</li>
-          <li>Particle effects</li>
+          <li>Good for mobility and utility</li>
         </ul>
-        <button class="btn btn-purple buy-btn" data-product="wizard" style="width:100%;font-size:8px">BUY NOW →</button>
+        <button class="btn btn-purple buy-btn" data-product="wizard_week" style="width:100%;font-size:8px">BUY 7 DAYS →</button>
       </div>
     </div>
 
-    <!-- KING -->
     <div class="px-card rank-card king">
-      <div class="corner-tl"></div><div class="corner-tr"></div>
-      <div class="corner-bl"></div><div class="corner-br"></div>
+      <div class="duration-badge">7 DAYS</div>
+      <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+      <div class="rank-badge best">BEST</div>
+      <div class="rank-header">
+        <div class="rank-icon">👑</div>
+        <div class="rank-name">[KING]</div>
+        <div class="rank-price price" data-usd="12.99" data-uah="579" data-rub="999">579 ₴<small>7 days</small></div>
+      </div>
+      <div class="rank-body">
+        <ul class="perks-list">
+          <li>Includes King kit</li>
+          <li>Top donor kit with best rewards</li>
+          <li>Netherite/diamond gear and rare items</li>
+          <li>Max homes: 5</li>
+          <li>Gold [KING] chat prefix</li>
+          <li>King bonus will be added after final balance</li>
+        </ul>
+        <button class="btn btn-gold buy-btn" data-product="king_week" style="width:100%;font-size:8px">BUY 7 DAYS →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="rank-period-title">◆ 30 DAYS RANKS</div>
+  <div class="rank-period-sub">Best value for regular players. All monthly ranks use LuckPerms addtemp 30d.</div>
+
+  <div class="ranks-grid">
+
+    <div class="px-card rank-card archer">
+      <div class="duration-badge">30 DAYS</div>
+      <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+      <div class="rank-header">
+        <div class="rank-icon">🏹</div>
+        <div class="rank-name">[ARCHER]</div>
+        <div class="rank-price price" data-usd="3.99" data-uah="179" data-rub="299">179 ₴<small>30 days</small></div>
+      </div>
+      <div class="rank-body">
+        <ul class="perks-list">
+          <li>Includes Archer kit</li>
+          <li>Bow-focused starter combat set</li>
+          <li>Arrows, armor and food included</li>
+          <li>Max homes: 2</li>
+          <li>Green [ARCHER] chat prefix</li>
+          <li>Good for ranged PvP and survival</li>
+        </ul>
+        <button class="btn btn-emerald buy-btn" data-product="archer_month" style="width:100%;font-size:8px">BUY 30 DAYS →</button>
+      </div>
+    </div>
+
+    <div class="px-card rank-card knight">
+      <div class="duration-badge">30 DAYS</div>
+      <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+      <div class="rank-badge popular">POPULAR</div>
+      <div class="rank-header">
+        <div class="rank-icon">🛡</div>
+        <div class="rank-name">[KNIGHT]</div>
+        <div class="rank-price price" data-usd="6.99" data-uah="309" data-rub="549">309 ₴<small>30 days</small></div>
+      </div>
+      <div class="rank-body">
+        <ul class="perks-list">
+          <li>Includes Knight kit</li>
+          <li>Close-combat melee kit</li>
+          <li>Sword, shield, armor and golden apples</li>
+          <li>Max homes: 3</li>
+          <li>Light-blue [KNIGHT] chat prefix</li>
+          <li>Good for tanky fights and raids</li>
+        </ul>
+        <button class="btn btn-knight-lightblue buy-btn" data-product="knight_month" style="width:100%;font-size:8px">BUY 30 DAYS →</button>
+      </div>
+    </div>
+
+    <div class="px-card rank-card wizard">
+      <div class="duration-badge">30 DAYS</div>
+      <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+      <div class="rank-badge popular">HOT 🔥</div>
+      <div class="rank-header">
+        <div class="rank-icon">🧙</div>
+        <div class="rank-name">[WIZARD]</div>
+        <div class="rank-price price" data-usd="11.99" data-uah="529" data-rub="899">529 ₴<small>30 days</small></div>
+      </div>
+      <div class="rank-body">
+        <ul class="perks-list">
+          <li>Includes Wizard kit</li>
+          <li>Advanced magic/combat kit</li>
+          <li>Strong weapons, trident and potions</li>
+          <li>Max homes: 4</li>
+          <li>Purple [WIZARD] chat prefix</li>
+          <li>Good for mobility and utility</li>
+        </ul>
+        <button class="btn btn-purple buy-btn" data-product="wizard_month" style="width:100%;font-size:8px">BUY 30 DAYS →</button>
+      </div>
+    </div>
+
+    <div class="px-card rank-card king">
+      <div class="duration-badge">30 DAYS</div>
+      <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
       <div class="rank-badge best">BEST VALUE</div>
       <div class="rank-header">
         <div class="rank-icon">👑</div>
         <div class="rank-name">[KING]</div>
-        <div class="rank-price">1000 TOK</div>
+        <div class="rank-price price" data-usd="19.99" data-uah="889" data-rub="1499">889 ₴<small>30 days</small></div>
       </div>
       <div class="rank-body">
         <ul class="perks-list">
+          <li>Includes King kit</li>
+          <li>Top donor kit with best rewards</li>
+          <li>Netherite/diamond gear and rare items</li>
+          <li>Max homes: 5</li>
           <li>Gold [KING] chat prefix</li>
-          <li>Unlimited /sethome</li>
-          <li>Access to ALL kits</li>
-          <li>/god mode</li>
-          <li>/invsee any player</li>
-          <li>5x McMMO XP boost</li>
-          <li>Custom particle trails</li>
-          <li>Discord KING role</li>
-          <li>Monthly bonus kit</li>
+          <li>King bonus will be added after final balance</li>
         </ul>
-        <button class="btn btn-gold buy-btn" data-product="king" style="width:100%;font-size:8px">BUY NOW →</button>
+        <button class="btn btn-gold buy-btn" data-product="king_month" style="width:100%;font-size:8px">BUY 30 DAYS →</button>
       </div>
     </div>
+  </div>
+</section>
 
+
+
+<!-- TOKENS -->
+<section id="tokens">
+  <div class="pixel-divider">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+  <h2 class="section-title" style="color:var(--gold);text-shadow:0 0 20px var(--gold2)">✦ SERVER TOKENS</h2>
+  <p class="section-sub">Buy server tokens directly. Rate: 1 token = $1. Prices are rounded for each currency.</p>
+  <div class="tokens-grid">
+
+    <div class="px-card token-card">
+      <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+      
+      <div class="token-icon">🪙</div>
+      <div class="token-name">1 TOKEN</div>
+      <div class="token-price price" data-usd="1" data-uah="45" data-rub="75">$1</div>
+      <div class="token-bonus">Small token top-up.</div>
+      <div style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_1" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
+    </div>
+
+    <div class="px-card token-card">
+      <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+      
+      <div class="token-icon">🪙</div>
+      <div class="token-name">5 TOKENS</div>
+      <div class="token-price price" data-usd="5" data-uah="225" data-rub="375">$5</div>
+      <div class="token-bonus">Basic token pack.</div>
+      <div style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_5" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
+    </div>
+
+    <div class="px-card token-card">
+      <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+      <div class="rank-badge popular">POPULAR</div>
+      <div class="token-icon">💰</div>
+      <div class="token-name">10 TOKENS</div>
+      <div class="token-price price" data-usd="10" data-uah="449" data-rub="749">$10</div>
+      <div class="token-bonus">Good pack for regular players.</div>
+      <div style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_10" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
+    </div>
+
+    <div class="px-card token-card">
+      <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+      
+      <div class="token-icon">💎</div>
+      <div class="token-name">25 TOKENS</div>
+      <div class="token-price price" data-usd="25" data-uah="1099" data-rub="1849">$25</div>
+      <div class="token-bonus">Large token pack.</div>
+      <div style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_25" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
+    </div>
+
+    <div class="px-card token-card">
+      <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+      <div class="rank-badge best">BEST</div>
+      <div class="token-icon">👑</div>
+      <div class="token-name">50 TOKENS</div>
+      <div class="token-price price" data-usd="50" data-uah="2199" data-rub="3699">$50</div>
+      <div class="token-bonus">Best pack for active players.</div>
+      <div style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_50" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
+    </div>
+
+    <div class="px-card token-card">
+      <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+      
+      <div class="token-icon">🏆</div>
+      <div class="token-name">100 TOKENS</div>
+      <div class="token-price price" data-usd="100" data-uah="4399" data-rub="7399">$100</div>
+      <div class="token-bonus">Maximum token pack.</div>
+      <div style="padding:16px"><button class="btn btn-token buy-btn" data-product="tokens_100" style="width:100%;font-size:8px">BUY TOKENS →</button></div>
+    </div>
   </div>
 </section>
 
@@ -759,7 +1218,7 @@
       <div class="corner-br" style="border-color:var(--red)"></div>
       <span class="unban-icon">🔓</span>
       <div class="unban-title">UNBAN</div>
-      <div class="unban-price">300 TOK</div>
+      <div class="unban-price price" data-usd="6.99" data-uah="309" data-rub="499">309 ₴</div>
       <p class="unban-desc">
         Banned from VanillaSMP?<br>
         Purchase an unban token to restore<br>
@@ -778,7 +1237,7 @@
       <div class="corner-br" style="border-color:var(--blue)"></div>
       <span class="unban-icon">🔊</span>
       <div class="unban-title" style="color:var(--blue);text-shadow:0 0 15px var(--blue)">UNMUTE</div>
-      <div class="unban-price">150 TOK</div>
+      <div class="unban-price price" data-usd="1.99" data-uah="89" data-rub="149">89 ₴</div>
       <p class="unban-desc">
         Muted in chat?<br>
         Restore your voice on VanillaSMP.<br>
@@ -796,7 +1255,7 @@
 <section id="why">
   <div class="pixel-divider">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
   <h2 class="section-title" style="color:var(--emerald);text-shadow:0 0 20px var(--emerald2)">◈ WHY BUY FROM US?</h2>
-  <p class="section-sub">Trusted by thousands of players since 2021.</p>
+  <p class="section-sub">We are preparing the server for public release.</p>
 
   <div class="why-grid">
     <div class="why-card">
@@ -807,12 +1266,12 @@
     <div class="why-card">
       <span class="why-icon">🔒</span>
       <div class="why-title">SECURE PAYMENTS</div>
-      <p class="why-desc">Powered by Stripe and PayPal. We never store your payment details. SSL encrypted checkout at every step.</p>
+      <p class="why-desc">Payment provider will be connected later. Test checkout is currently enabled.</p>
     </div>
     <div class="why-card">
       <span class="why-icon">❤</span>
       <div class="why-title">SUPPORTS THE SERVER</div>
-      <p class="why-desc">100% of purchases go directly toward server hosting, development, and keeping VanillaSMP online and lag-free.</p>
+      <p class="why-desc">Future donations will support hosting, development, plugins and server maintenance.</p>
     </div>
     <div class="why-card">
       <span class="why-icon">🎮</span>
@@ -827,13 +1286,13 @@
   <div class="discord-inner">
     <div style="font-size:48px;margin-bottom:16px">💬</div>
     <div class="discord-big">JOIN OUR DISCORD</div>
-    <div class="discord-count">● 4,200 MEMBERS ONLINE</div>
+    <div class="discord-count">● JOIN OUR DISCORD</div>
     <p class="discord-sub">
-      Get support, stay updated on events,<br>
-      report bugs, and connect with the community.<br>
-      Exclusive Discord-only giveaways every week!
+      Join our official Discord server.<br>
+      Get updates, support, announcements and community news.<br>
+      Rules and tickets will be added before public launch.
     </p>
-    <a href="#" class="btn btn-purple" style="font-size:9px">JOIN DISCORD SERVER</a>
+    <a href="https://discord.gg/6BZf7naQKR" target="_blank" rel="noopener noreferrer" class="btn btn-purple" style="font-size:9px">JOIN DISCORD SERVER</a>
   </div>
 </section>
 
@@ -848,8 +1307,7 @@
     <input class="purchase-input" id="mcNick" maxlength="16" placeholder="Your nickname">
 
     <div class="purchase-info">
-      After payment, the product will be issued automatically to this nickname.
-      Check your nick carefully.
+      Test mode is enabled. No real payment is charged yet. The backend will only print the Minecraft command in Render logs.
     </div>
 
     <div class="purchase-error" id="purchaseError"></div>
@@ -865,8 +1323,8 @@
   <div class="footer-inner">
     <div>
       <div class="footer-col-title">⚔ VANILLASMP</div>
-      <div class="footer-ip">play.vanillasmp.net</div><br>
-      <div class="footer-ip-sub" style="margin-top:8px">Java 1.8 — 1.21 · Bedrock: 19132</div>
+      <div class="footer-ip">vanillasmp.space</div><br>
+      <div class="footer-ip-sub" style="margin-top:8px">Java 1.21+ · vanillasmp.space</div>
     </div>
     <div>
       <div class="footer-col-title">STORE</div>
@@ -874,27 +1332,28 @@
         <li><a href="#ranks">Ranks</a></li>
         <li><a href="#unban">Unban</a></li>
         <li><a href="#unban">Unmute</a></li>
-        <li><a href="#">Kits</a></li>
-        <li><a href="#">Cosmetics</a></li>
+        <li><a href="#ranks">Kits</a></li>
+        <li><a href="#why">Cosmetics</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">SUPPORT</div>
       <ul class="footer-links">
-        <li><a href="#">Discord Support</a></li>
-        <li><a href="#">Submit a Ticket</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Refund Policy</a></li>
-        <li><a href="#">Bug Report</a></li>
+        <li><a href="https://discord.gg/6BZf7naQKR" target="_blank" rel="noopener noreferrer">Discord Support</a></li>
+        <li><a href="support.html">Submit a Ticket</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="refund.html">Refund Policy</a></li>
+        <li><a href="support.html">Bug Report</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">LEGAL</div>
       <ul class="footer-links">
-        <li><a href="#">Server Rules</a></li>
-        <li><a href="#">Terms of Service</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">EULA Compliance</a></li>
+        <li><a href="https://discord.gg/6BZf7naQKR" target="_blank" rel="noopener noreferrer">Server Rules</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="refund.html">Refund Policy</a></li>
+        <li><a href="eula.html">EULA Compliance</a></li>
       </ul>
     </div>
   </div>
@@ -967,14 +1426,82 @@
     });
   });
 
+
+  // ── CURRENCY SWITCHER FIX ──
+  window.selectedCurrency = localStorage.getItem("vanillasmp_currency") || "UAH";
+
+  function formatVanillaPrice(value, currency) {
+    if (currency === "UAH") return value + " ₴";
+    if (currency === "RUB") return value + " ₽";
+    return "$" + value;
+  }
+
+  function updateVanillaCurrencyUI(animated = false) {
+    const prices = document.querySelectorAll(".price");
+
+    document.querySelectorAll(".currency-btn").forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.currency === window.selectedCurrency);
+    });
+
+    const applyValues = () => {
+      prices.forEach(price => {
+        const value = price.dataset[window.selectedCurrency.toLowerCase()];
+        const small = price.querySelector("small");
+        const smallHtml = small ? small.outerHTML : "";
+        price.innerHTML = formatVanillaPrice(value, window.selectedCurrency) + smallHtml;
+      });
+    };
+
+    if (!animated) {
+      applyValues();
+      return;
+    }
+
+    prices.forEach(price => price.classList.add("price-changing"));
+
+    setTimeout(() => {
+      applyValues();
+
+      requestAnimationFrame(() => {
+        prices.forEach(price => price.classList.remove("price-changing"));
+      });
+    }, 220);
+  }
+
+  document.addEventListener("click", (event) => {
+    const btn = event.target.closest(".currency-btn");
+    if (!btn) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    window.selectedCurrency = btn.dataset.currency || "UAH";
+    localStorage.setItem("vanillasmp_currency", window.selectedCurrency);
+    updateVanillaCurrencyUI();
+  });
+
+  document.addEventListener("DOMContentLoaded", () => updateVanillaCurrencyUI(false));
+  updateVanillaCurrencyUI(false);
+
   // ── PURCHASE FLOW ──
   const productNames = {
-    archer: "Archer rank",
-    knight: "Knight rank",
-    wizard: "Wizard rank",
-    king: "King rank",
+    archer_week: "Archer — 7 days",
+    knight_week: "Knight — 7 days",
+    wizard_week: "Wizard — 7 days",
+    king_week: "King — 7 days",
+    archer_month: "Archer — 30 days",
+    knight_month: "Knight — 30 days",
+    wizard_month: "Wizard — 30 days",
+    king_month: "King — 30 days",
+    tokens_1: "1 Token",
+    tokens_5: "5 Tokens",
+    tokens_10: "10 Tokens",
+    tokens_25: "25 Tokens",
+    tokens_50: "50 Tokens",
+    tokens_100: "100 Tokens",
     unban: "Unban",
-    unmute: "Unmute"
+    unmute: "Unmute",
+    coins_1000: "1000 Coins"
   };
 
   const purchaseModal = document.getElementById("purchaseModal");
@@ -992,7 +1519,7 @@
   document.querySelectorAll(".buy-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       selectedProduct = btn.dataset.product;
-      purchaseTitle.textContent = "PURCHASE: " + (productNames[selectedProduct] || selectedProduct);
+      purchaseTitle.textContent = "PURCHASE: " + (productNames[selectedProduct] || selectedProduct) + " / " + (window.selectedCurrency || "UAH");
       purchaseError.textContent = "";
       mcNick.value = "";
       purchaseModal.classList.add("active");
@@ -1027,7 +1554,7 @@
       const response = await fetch("/api/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ product: selectedProduct, nickname })
+        body: JSON.stringify({ product: selectedProduct, nickname, currency: window.selectedCurrency || 'UAH' })
       });
 
       const data = await response.json();
@@ -1047,6 +1574,240 @@
     }
   });
 
+
+  // ── LIVE SERVER STATUS ──
+  async function updateServerStatus() {
+    const num = document.getElementById("onlinePlayers");
+    const label = document.getElementById("onlineLabel");
+    if (!num || !label) return;
+
+    try {
+      const res = await fetch("/api/server-status", { cache: "no-store" });
+      const data = await res.json();
+
+      if (!data.online) {
+        num.textContent = "OFF";
+        label.textContent = "SERVER OFFLINE";
+        return;
+      }
+
+      num.textContent = `${data.playersOnline}/${data.playersMax}`;
+      label.textContent = "PLAYERS ONLINE";
+    } catch (e) {
+      num.textContent = "?";
+      label.textContent = "STATUS ERROR";
+    }
+  }
+
+  updateServerStatus();
+  setInterval(updateServerStatus, 30000);
+
 </script>
+
+<script>
+// HARD_FIX_SCRIPT_V4_3
+(function () {
+  const CURRENCIES = ["UAH", "RUB", "USD"];
+  window.selectedCurrency = localStorage.getItem("vanillasmp_currency") || "UAH";
+
+  function formatSmoothPrice(value, currency) {
+    if (currency === "UAH") return value + " ₴";
+    if (currency === "RUB") return value + " ₽";
+    return "$" + value;
+  }
+
+  function setActiveCurrencyButton(currency) {
+    document.querySelectorAll(".currency-btn").forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.currency === currency);
+    });
+  }
+
+  function applyCurrencyValues(currency) {
+    document.querySelectorAll(".price").forEach(price => {
+      const value = price.dataset[currency.toLowerCase()];
+      const small = price.querySelector("small");
+      const smallHtml = small ? small.outerHTML : "";
+      price.innerHTML = formatSmoothPrice(value, currency) + smallHtml;
+    });
+  }
+
+  function switchCurrencySmooth(currency, animated) {
+    if (!CURRENCIES.includes(currency)) currency = "UAH";
+
+    window.selectedCurrency = currency;
+    localStorage.setItem("vanillasmp_currency", currency);
+    setActiveCurrencyButton(currency);
+
+    const prices = Array.from(document.querySelectorAll(".price"));
+
+    if (!animated) {
+      applyCurrencyValues(currency);
+      return;
+    }
+
+    prices.forEach(price => price.classList.add("currency-fade-out"));
+
+    setTimeout(() => {
+      applyCurrencyValues(currency);
+
+      requestAnimationFrame(() => {
+        prices.forEach(price => price.classList.remove("currency-fade-out"));
+      });
+    }, 260);
+  }
+
+  // Initial load without animation
+  function initCurrency() {
+    switchCurrencySmooth(window.selectedCurrency, false);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCurrency);
+  } else {
+    initCurrency();
+  }
+
+  // IMPORTANT:
+  // Capture phase + stopImmediatePropagation prevents old instant handlers from firing.
+  document.addEventListener("click", function (event) {
+    const btn = event.target.closest(".currency-btn");
+    if (!btn) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+
+    const currency = btn.dataset.currency || "UAH";
+    switchCurrencySmooth(currency, true);
+  }, true);
+})();
+</script>
+
+
+<script>
+/* ── VANILLASMP WORKING SCROLL PARALLAX BACKGROUND ── */
+/* ===================== COSMOS BACKGROUND (full scroll parallax) ===================== */
+(function(){
+const cv=document.getElementById('scroll-cosmos-bg');const ctx=cv.getContext('2d');
+const W=512,H=288;cv.width=W;cv.height=H;
+let seed=606060;
+function rnd(){seed=(seed*1103515245+12345)&0x7fffffff;return seed/0x7fffffff;}
+let curD,curW,curH;function use(d,w,h){curD=d;curW=w;curH=h;}
+function px(x,y,c,a){x|=0;y|=0;if(x<0||x>=curW||y<0||y>=curH)return;let i=(y*curW+x)*4;if(a===undefined){curD[i]=c[0];curD[i+1]=c[1];curD[i+2]=c[2];curD[i+3]=255;}else{let ia=1-a;curD[i]=c[0]*a+curD[i]*ia;curD[i+1]=c[1]*a+curD[i+1]*ia;curD[i+2]=c[2]*a+curD[i+2]*ia;curD[i+3]=255;}}
+function lpx(x,y,c,a){x|=0;y|=0;if(x<0||x>=curW||y<0||y>=curH)return;let i=(y*curW+x)*4;curD[i]=c[0];curD[i+1]=c[1];curD[i+2]=c[2];curD[i+3]=Math.max(curD[i+3],(a===undefined?1:a)*255);}
+function disc(cx,cy,r,c,a){for(let y=-r;y<=r;y++){let ww=Math.floor(Math.sqrt(Math.max(0,r*r-y*y)));for(let x=-ww;x<=ww;x++)lpx(cx+x,cy+y,c,a);}}
+function clamp(v){return v<0?0:v>255?255:v|0;}
+function lerp(a,b,t){return [a[0]+(b[0]-a[0])*t|0,a[1]+(b[1]-a[1])*t|0,a[2]+(b[2]-a[2])*t|0];}
+function ef(x,m){let a=1;if(x<m)a=x/m;else if(x>W-m)a=(W-x)/m;return a<0?0:a>1?1:a;}
+const B8=[[0,32,8,40,2,34,10,42],[48,16,56,24,50,18,58,26],[12,44,4,36,14,46,6,38],[60,28,52,20,62,30,54,22],[3,35,11,43,1,33,9,41],[51,19,59,27,49,17,57,25],[15,47,7,39,13,45,5,37],[63,31,55,23,61,29,53,21]];
+function bay(x,y){return B8[y&7][x&7]/64;}
+function fbm(x,y){let n=0,amp=0.5,fx=0.013,fy=0.013,ph=0;for(let o=0;o<4;o++){n+=amp*Math.sin(x*fx+ph)*Math.cos(y*fy*1.3+ph*0.7);fx*=2.07;fy*=1.93;amp*=0.55;ph+=1.7;}return n;}
+function mkCanvas(w,h){const c=document.createElement('canvas');c.width=w;c.height=h;return c;}
+
+/* ---- bgC: tileable (vertical) nebula + base stars, opaque, pans on scroll ---- */
+const bgC=mkCanvas(W,H);const bgx=bgC.getContext('2d');
+const bgImg=bgx.createImageData(W,H);use(bgImg.data,W,H);
+const NEB=[{x:110,y:90,r:200,c:[120,40,120]},{x:360,y:60,r:210,c:[40,72,160]},{x:240,y:200,r:200,c:[26,120,130]},{x:460,y:170,r:160,c:[100,46,160]},{x:200,y:30,r:150,c:[60,40,150]}];
+const CORES=[[110,90,[180,140,200]],[360,60,[150,180,225]],[240,200,[150,210,200]]];
+function wrapdy(dy){if(dy>H/2)dy-=H;if(dy<-H/2)dy+=H;return dy;}
+for(let y=0;y<H;y++){let ya=y*6.2832/H;for(let x=0;x<W;x++){
+  let f=0.45+0.32*Math.sin(x*0.02+Math.sin(ya)*1.6)*Math.cos(Math.sin(2*ya)+x*0.011);if(f<0.12)f=0.12;
+  let dl=0.5+0.5*Math.sin(x*0.03+Math.cos(ya)*2.2);let dust=0.45+0.55*dl;
+  let add=[0,0,0],tot=0;
+  for(let n=0;n<NEB.length;n++){let ddx=x-NEB[n].x,ddy=wrapdy(y-NEB[n].y);let rr=NEB[n].r;let gd=Math.exp(-(ddx*ddx+ddy*ddy)/(2*(rr*0.5)*(rr*0.5)));let inten=gd*f*dust;let boost=bay(x,y)<inten?1.2:0.45;add[0]+=NEB[n].c[0]*inten*boost*0.3;add[1]+=NEB[n].c[1]*inten*boost*0.3;add[2]+=NEB[n].c[2]*inten*boost*0.3;tot+=inten;}
+  let base=[6,5,14];if(tot>0.02){let occ=Math.min(1,tot*1.2);base=[clamp(base[0]*(1-occ*0.4)+add[0]),clamp(base[1]*(1-occ*0.4)+add[1]),clamp(base[2]*(1-occ*0.4)+add[2])];}
+  for(let q=0;q<CORES.length;q++){let ddx=x-CORES[q][0],ddy=wrapdy(y-CORES[q][1]);let cg=Math.exp(-(ddx*ddx+ddy*ddy)/(2*16*16));if(cg>0.06&&bay(x,y)<cg*1.3){base=[clamp(base[0]+CORES[q][2][0]*cg*0.6),clamp(base[1]+CORES[q][2][1]*cg*0.6),clamp(base[2]+CORES[q][2][2]*cg*0.6)];}}
+  let i=(y*W+x)*4;bgImg.data[i]=base[0];bgImg.data[i+1]=base[1];bgImg.data[i+2]=base[2];bgImg.data[i+3]=255;
+}}
+use(bgImg.data,W,H);
+for(let k=0;k<300;k++){let x=rnd()*W|0,y=rnd()*H|0,b=rnd();px(x,y,b>0.55?[120,122,150]:[72,74,100],0.25+0.45*b);}
+bgx.putImageData(bgImg,0,0);
+
+/* ---- vigC: fixed vignette overlay (screen space) ---- */
+const vigC=mkCanvas(W,H);const vgx=vigC.getContext('2d');
+const vigImg=vgx.createImageData(W,H);use(vigImg.data,W,H);
+for(let y=0;y<H;y++)for(let x=0;x<W;x++){let dx=(x-W*0.46)/(W*0.62),dy=(y-H*0.46)/(H*0.62);let d=dx*dx+dy*dy;let a=(d-0.42)*0.85;if(a>0){a=Math.min(0.6,a);let i=(y*W+x)*4;vigImg.data[i]=3;vigImg.data[i+1]=2;vigImg.data[i+2]=9;vigImg.data[i+3]=a*255;}}
+vgx.putImageData(vigImg,0,0);
+
+/* ---- fxC: anchored far FX (galaxies, sun, distant planet) ---- */
+const fxC=mkCanvas(W,H);const fxx=fxC.getContext('2d');
+const fxImg=fxC.getContext('2d').createImageData(W,H);use(fxImg.data,W,H);
+function galaxy(cx,cy,rx,ry,rot,col,al){for(let a=0;a<6.283;a+=0.07){for(let arm=0;arm<2;arm++){let aa=a+arm*Math.PI;let R=a/6.283;let r=R*rx;let sx=Math.cos(aa+R*3.2)*r,sy=Math.sin(aa+R*3.2)*r*(ry/rx);let x=cx+sx*Math.cos(rot)-sy*Math.sin(rot);let y=cy+sx*Math.sin(rot)+sy*Math.cos(rot);if(rnd()<0.6)lpx(x|0,y|0,col,al*(1-R));}}disc(cx,cy,1,[200,200,230],al*0.8);}
+galaxy(70,210,16,7,0.5,[150,130,180],0.5);galaxy(150,60,12,5,-0.7,[130,150,180],0.42);
+(function distPlanet(){let dx=120,dy=235,r=7;disc(dx,dy,r+1,[50,80,120],0.1);for(let y=-r;y<=r;y++)for(let x=-r;x<=r;x++){if(x*x+y*y>r*r)continue;let nx=x/r,ny=y/r,nz=Math.sqrt(Math.max(0,1-nx*nx-ny*ny));let diff=nx*0.7+ny*-0.4+nz*0.6;if(diff<0)diff=0;lpx(dx+x,dy+y,lerp([22,34,56],[96,134,176],diff),1);}})();
+(function sun(){let sx=496,sy=20;disc(sx,sy,2,[255,250,232],1);disc(sx,sy,6,[255,238,200],0.16);})();
+fxx.putImageData(fxImg,0,0);
+
+/* ---- planet system ---- */
+const PR=34,RO=74,RI=46,RK=0.34,PX=398,PY=120,L=[0.62,-0.46,0.64];
+function angd(a,b){let d=((a-b+Math.PI)%(2*Math.PI));if(d<0)d+=2*Math.PI;return Math.abs(d-Math.PI);}
+function ringCanvas(front){const c=mkCanvas(W,H);const cx=c.getContext('2d');const im=cx.createImageData(W,H);use(im.data,W,H);
+  for(let a=0;a<6.2832;a+=0.006){let s=Math.sin(a),co=Math.cos(a);if(front?(s<0):(s>=0))continue;for(let R=RI;R<RO;R++){let rt=(R-RI)/(RO-RI);let gap=Math.sin(rt*18)*0.5+0.5;if(gap<0.32)continue;if(rt>0.44&&rt<0.54)continue;let x=PX+co*R,y=PY+s*R*RK;let shade=1;if(co<-0.1)shade=0.4;else if(!front&&co<0.2)shade=0.7;let cc2=lerp([195,184,212],[116,104,146],Math.abs(rt-0.5)*1.7);cc2=[cc2[0]*shade|0,cc2[1]*shade|0,cc2[2]*shade|0];lpx(x|0,y|0,cc2,0.85*(0.6+0.4*Math.sin(a*13)));}}
+  cx.putImageData(im,0,0);return c;}
+const backRingC=ringCanvas(false),frontRingC=ringCanvas(true);
+const SLON=0.5,SLAT=-0.14,PAD=5,PS=PR+PAD,NF=56,FRAMES=[];
+for(let fi=0;fi<NF;fi++){const rot=fi/NF*2*Math.PI;const c=mkCanvas(2*PS,2*PS);const cc=c.getContext('2d');const im=cc.createImageData(2*PS,2*PS);use(im.data,2*PS,2*PS);
+  for(let y=-PR;y<=PR;y++)for(let x=-PR;x<=PR;x++){if(x*x+y*y>PR*PR)continue;let nx=x/PR,ny=y/PR,nz=Math.sqrt(Math.max(0,1-nx*nx-ny*ny));let diff=nx*L[0]+ny*L[1]+nz*L[2];if(diff<0)diff=0;let lat=Math.asin(Math.max(-1,Math.min(1,ny)));let lon=Math.atan2(nx,nz)+rot;let sw=fbm(lon*40+5,lat*70);let band=Math.sin(lat*7+sw*1.3);let base=band>0.35?[132,104,168]:(band>-0.1?[98,78,140]:[78,60,118]);if(band>0.0&&band<0.18)base=lerp(base,[58,148,158],0.4);let dlon=angd(lon,SLON),dlat=lat-SLAT;if(dlon<1.0&&(dlon*dlon*0.6+dlat*dlat*5.0)<0.10)base=lerp([180,112,138],[118,62,98],0.5);let limb=0.55+0.45*nz;let shade=(0.12+1.05*diff)*limb;let col=[clamp(base[0]*shade),clamp(base[1]*shade),clamp(base[2]*shade)];let spec=Math.pow(diff,8);col=[clamp(col[0]+spec*110),clamp(col[1]+spec*100),clamp(col[2]+spec*125)];let edge=1-Math.sqrt(nx*nx+ny*ny);if(edge<0.14&&diff>0.12){let rim=(0.14-edge)/0.14;col=lerp(col,[150,150,230],rim*0.6);}lpx(PS+x,PS+y,col,1);}
+  cc.putImageData(im,0,0);FRAMES.push(c);}
+
+/* ---- drifting nebula wisps (overlay) ---- */
+function mkNeb(h,col,op,fscale){const c=mkCanvas(W,h);const cx2=c.getContext('2d');const dd=cx2.createImageData(W,h);use(dd.data,W,h);for(let y=0;y<h;y++)for(let x=0;x<W;x++){let v=Math.sin(2*Math.PI*2*x/W+y*0.04)*0.5+Math.sin(2*Math.PI*3*x/W-y*0.05+1)*0.32+Math.sin(2*Math.PI*5*x/W+y*0.03+2)*0.2;let env=1-Math.abs(y-h/2)/(h/2);let d=v*0.6+env*0.85-0.5;if(d>0&&bay(x,y)<d*fscale)lpx(x,y,col,Math.min(op,d*op*2));}cx2.putImageData(dd,0,0);return c;}
+const nebFar=mkNeb(130,[130,80,170],0.16,1.3),nebNear=mkNeb(150,[100,60,160],0.24,1.1);
+
+/* ---- dynamic point layers ---- */
+const FARS=[];for(let i=0;i<220;i++)FARS.push([rnd()*W,rnd()*H,1+rnd()*2,rnd()*6.28]);
+const MID=[];for(let i=0;i<80;i++)MID.push([rnd()*W,rnd()*H,8+rnd()*7,1,rnd()*6.28]);
+const TW=[];const SCOL=[[240,240,255],[175,195,255],[255,222,175],[255,170,170]];
+for(let i=0;i<40;i++)TW.push([rnd()*W|0,rnd()*H|0,rnd()*6.28,rnd()<0.3?2:1,SCOL[rnd()*4|0]]);
+const BIG=[];for(let i=0;i<6;i++)BIG.push([40+rnd()*(W-80),26+rnd()*(H-70),rnd()*6.28,SCOL[rnd()*4|0],1+rnd()*1.5]);
+const DUST=[];for(let i=0;i<40;i++)DUST.push([rnd()*W,rnd()*H,2+rnd()*4]);
+const COM=[{p:11,o:0,y:40,sy:0.45},{p:17,o:0.5,y:150,sy:0.3},{p:26,o:0.75,y:230,sy:-0.28}];
+const SHOOT=[{p:4.5,o:0.1,x:0.2,y:0.1},{p:7,o:0.6,x:0.65,y:0.06}];
+function cdisc(cx,cy,r,col,a){ctx.globalAlpha=a;ctx.fillStyle=col;for(let y=-r;y<=r;y++){let ww=Math.floor(Math.sqrt(Math.max(0,r*r-y*y)));ctx.fillRect(cx-ww|0,cy+y|0,2*ww+1,1);}ctx.globalAlpha=1;}
+function bigStar(x,y,b,col,sz){if(b<=0.01)return;let rc='rgb('+col[0]+','+col[1]+','+col[2]+')';cdisc(x,y,sz*3,rc,0.08*b);cdisc(x,y,sz*2,rc,0.13*b);let L2=sz*4*b;for(let i=1;i<L2;i++){let a=(1-i/L2)*0.4*b;ctx.globalAlpha=a;ctx.fillStyle=rc;ctx.fillRect(x|0,y-i|0,1,1);ctx.fillRect(x|0,y+i|0,1,1);ctx.fillRect(x-i|0,y|0,1,1);ctx.fillRect(x+i|0,y|0,1,1);}ctx.globalAlpha=b;ctx.fillStyle='#fff';ctx.fillRect(x|0,y|0,1,1);ctx.globalAlpha=1;}
+function wy(yv){return ((yv%H)+H)%H;}
+function vfade(y,m){let a=1;if(y<m)a=y/m;else if(y>H-m)a=(H-y)/m;return a<0?0:a>1?1:a;}
+
+let scrollY=0,targetScroll=0;
+window.addEventListener('scroll',()=>{targetScroll=window.scrollY||window.pageYOffset||0;},{passive:true});
+
+function loop(now){
+  let t=now/1000;let cam=Math.sin(t*0.04)*6;
+  scrollY+=(targetScroll-scrollY)*0.12;
+  let bgo=scrollY*0.05,s1=scrollY*0.07,s2=scrollY*0.13,s3=scrollY*0.18,s4=scrollY*0.28,sn1=scrollY*0.06,sn2=scrollY*0.14;
+  /* 1: panning tileable background */
+  let yo=((bgo%H)+H)%H;ctx.drawImage(bgC,0,yo);ctx.drawImage(bgC,0,yo-H);
+  /* 2: fixed vignette */
+  ctx.drawImage(vigC,0,0);
+  /* 3: far fx (slow parallax) */
+  ctx.drawImage(fxC,0,scrollY*0.04);
+  /* 4: far drifting nebula (pans) */
+  let fo=Math.floor((t*1.4+cam)%W);let ny1=((30+sn1)%H+H)%H;ctx.globalAlpha=0.4;ctx.drawImage(nebFar,-fo,ny1);ctx.drawImage(nebFar,W-fo,ny1);ctx.drawImage(nebFar,-fo,ny1-H);ctx.drawImage(nebFar,W-fo,ny1-H);ctx.globalAlpha=1;
+  /* 5-7: drifting point stars */
+  ctx.fillStyle='#9aa0c8';FARS.forEach(s=>{let x=((s[0]-t*0.4-cam*0.25)%W+W)%W;let y=wy(s[1]+s1);let b=0.28+0.45*(0.5+0.5*Math.sin(t*1.4+s[3]));ctx.globalAlpha=b*0.7*ef(x,20)*vfade(y,16);ctx.fillRect(x|0,y|0,1,1);});ctx.globalAlpha=1;
+  MID.forEach(s=>{let x=((s[0]-t*s[2]*0.25-cam*0.5)%W+W)%W;let y=wy(s[1]+s2);let b=0.3+0.5*(0.5+0.5*Math.sin(t*3+s[4]));ctx.globalAlpha=b*ef(x,26)*vfade(y,16);ctx.fillStyle='#c4c9ea';ctx.fillRect(x|0,y|0,1,1);ctx.globalAlpha=1;});
+  TW.forEach(s=>{let y=wy(s[1]+s3);let b=0.3+0.6*(0.5+0.5*Math.sin(t*2.4+s[2]));ctx.globalAlpha=b*ef(s[0],14)*vfade(y,14);ctx.fillStyle='rgb('+s[4][0]+','+s[4][1]+','+s[4][2]+')';let r=s[3];ctx.fillRect(s[0],y-r,1,2*r+1);ctx.fillRect(s[0]-r,y,2*r+1,1);ctx.globalAlpha=1;});
+  /* 8: anchored planet system (back ring -> planet -> front ring -> moon) */
+  let poff=scrollY*0.06;
+  ctx.drawImage(backRingC,0,poff);
+  let fi=Math.floor((t/80*NF)%NF+NF)%NF;ctx.drawImage(FRAMES[fi],PX-PS,PY-PS+poff);
+  ctx.drawImage(frontRingC,0,poff);
+  let ma=t*0.4;let mr=PR+12,mx=PX+Math.cos(ma)*mr*1.6,my=PY+poff+Math.sin(ma)*mr*RK*1.6;let mfade=Math.max(0,Math.min(1,Math.sin(ma)*5));if(mfade>0){ctx.globalAlpha=mfade;ctx.fillStyle='#c8c2d8';for(let yy=-2;yy<=2;yy++){let ww=Math.floor(2*Math.sqrt(Math.max(0,1-yy*yy/4)));ctx.fillRect(mx-ww|0,my+yy|0,ww*2+1,1);}ctx.globalAlpha=1;}
+  /* 9: big foreground stars */
+  BIG.forEach(s=>{let b=0.5+0.45*(0.5+0.5*Math.sin(t*2+s[2]));let x=((s[0]-t*1.4-cam*1.1)%W+W)%W;let y=wy(s[1]+s4);bigStar(x,y,b*ef(x,52)*vfade(y,40),s[3],s[4]);});
+  /* 10: near drifting nebula (pans) */
+  let no=Math.floor((t*7+cam*1.5)%W);let ny2=((100+sn2)%H+H)%H;ctx.globalAlpha=0.4;ctx.drawImage(nebNear,-no,ny2);ctx.drawImage(nebNear,W-no,ny2);ctx.drawImage(nebNear,-no,ny2-H);ctx.drawImage(nebNear,W-no,ny2-H);ctx.globalAlpha=1;
+  /* 11: dust */
+  ctx.fillStyle='#cfd2ee';DUST.forEach(d=>{let x=((d[0]-t*d[2]*0.6)%W+W)%W;let y=wy(d[1]-t*d[2]*0.2+s4);ctx.globalAlpha=0.25*ef(x,16)*vfade(y,16);ctx.fillRect(x|0,y|0,1,1);});ctx.globalAlpha=1;
+  /* 12: comets + shooting stars */
+  let sc=scrollY*0.14,ss=scrollY*0.22;
+  COM.forEach(c=>{let ph=((t/c.p+c.o)%1);let x=W+40-ph*(W+140);let by=wy(c.y+ph*(W+140)*c.sy*0.3+sc);let vC=vfade(by,30);for(let k=0;k<22;k++){let tx=x+k*2.2,ty=by-k*2.2*c.sy*0.3;ctx.globalAlpha=0.85*(1-k/22)*vC;ctx.fillStyle=k<3?'#FFFFFF':'#B9C6FF';ctx.fillRect(tx|0,ty|0,1,1);}ctx.globalAlpha=1;});
+  SHOOT.forEach(s=>{let ph=((t/s.p+s.o)%1);if(ph>0.1)return;let pr=ph/0.1;let x=s.x*W+pr*120;let by=wy(s.y*H+pr*80+ss);let vS=vfade(by,24);let envf=Math.sin(pr*Math.PI);for(let k=0;k<12;k++){ctx.globalAlpha=(1-k/12)*envf*vS;ctx.fillStyle='#FFFFFF';ctx.fillRect(x-k*3|0,by-k*2|0,1,1);}ctx.globalAlpha=1;});
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+})();
+</script>
+
 </body>
 </html>
