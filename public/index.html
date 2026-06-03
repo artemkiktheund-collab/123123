@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1691,7 +1690,7 @@
   let selectedProduct = null;
 
   function validMinecraftNick(name) {
-    return /^[a-zA-Z0-9_]{3,16}$/.live(name);
+    return /^[a-zA-Z0-9_]{3,16}$/.test(name);
   }
 
   document.querySelectorAll(".buy-btn").forEach(btn => {
@@ -1743,7 +1742,7 @@
       }
 
       if (data.paymentUrl) {
-        window.location.href = data.paymentUrl;
+        window.location.href = data.paymentUrl || ('/payment.html?order=' + data.orderId);
       } else {
         purchaseError.textContent = "No payment URL returned.";
       }
