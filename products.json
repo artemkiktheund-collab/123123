@@ -8,7 +8,11 @@
       "RUB": 149
     },
     "commands": [
-      "lp user {player} parent addtemp archer 7d"
+      "lp user {player} parent removetemp knight",
+      "lp user {player} parent removetemp wizard",
+      "lp user {player} parent removetemp king",
+      "lp user {player} parent addtemp archer 7d",
+      "lp user {player} parent switchprimarygroup archer"
     ],
     "description": "Temporary Archer privilege. Includes Archer kit and 2 homes."
   },
@@ -21,7 +25,11 @@
       "RUB": 299
     },
     "commands": [
-      "lp user {player} parent addtemp knight 7d"
+      "lp user {player} parent removetemp archer",
+      "lp user {player} parent removetemp wizard",
+      "lp user {player} parent removetemp king",
+      "lp user {player} parent addtemp knight 7d",
+      "lp user {player} parent switchprimarygroup knight"
     ],
     "description": "Temporary Knight privilege. Includes Knight kit and 3 homes."
   },
@@ -34,7 +42,11 @@
       "RUB": 549
     },
     "commands": [
-      "lp user {player} parent addtemp wizard 7d"
+      "lp user {player} parent removetemp archer",
+      "lp user {player} parent removetemp knight",
+      "lp user {player} parent removetemp king",
+      "lp user {player} parent addtemp wizard 7d",
+      "lp user {player} parent switchprimarygroup wizard"
     ],
     "description": "Temporary Wizard privilege. Includes Wizard kit and 4 homes."
   },
@@ -47,7 +59,11 @@
       "RUB": 999
     },
     "commands": [
-      "lp user {player} parent addtemp king 7d"
+      "lp user {player} parent removetemp archer",
+      "lp user {player} parent removetemp knight",
+      "lp user {player} parent removetemp wizard",
+      "lp user {player} parent addtemp king 7d",
+      "lp user {player} parent switchprimarygroup king"
     ],
     "description": "Temporary King privilege. Includes King kit and 5 homes."
   },
@@ -60,7 +76,11 @@
       "RUB": 299
     },
     "commands": [
-      "lp user {player} parent addtemp archer 30d"
+      "lp user {player} parent removetemp knight",
+      "lp user {player} parent removetemp wizard",
+      "lp user {player} parent removetemp king",
+      "lp user {player} parent addtemp archer 30d",
+      "lp user {player} parent switchprimarygroup archer"
     ],
     "description": "Temporary Archer privilege. Includes Archer kit and 2 homes."
   },
@@ -73,7 +93,11 @@
       "RUB": 549
     },
     "commands": [
-      "lp user {player} parent addtemp knight 30d"
+      "lp user {player} parent removetemp archer",
+      "lp user {player} parent removetemp wizard",
+      "lp user {player} parent removetemp king",
+      "lp user {player} parent addtemp knight 30d",
+      "lp user {player} parent switchprimarygroup knight"
     ],
     "description": "Temporary Knight privilege. Includes Knight kit and 3 homes."
   },
@@ -86,7 +110,11 @@
       "RUB": 899
     },
     "commands": [
-      "lp user {player} parent addtemp wizard 30d"
+      "lp user {player} parent removetemp archer",
+      "lp user {player} parent removetemp knight",
+      "lp user {player} parent removetemp king",
+      "lp user {player} parent addtemp wizard 30d",
+      "lp user {player} parent switchprimarygroup wizard"
     ],
     "description": "Temporary Wizard privilege. Includes Wizard kit and 4 homes."
   },
@@ -99,7 +127,11 @@
       "RUB": 1499
     },
     "commands": [
-      "lp user {player} parent addtemp king 30d"
+      "lp user {player} parent removetemp archer",
+      "lp user {player} parent removetemp knight",
+      "lp user {player} parent removetemp wizard",
+      "lp user {player} parent addtemp king 30d",
+      "lp user {player} parent switchprimarygroup king"
     ],
     "description": "Temporary King privilege. Includes King kit and 5 homes."
   },
