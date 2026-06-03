@@ -3,6 +3,7 @@ import crypto from "crypto";
 import fs from "fs";
 import dotenv from "dotenv";
 import { Rcon } from "rcon-client";
+import { status } from "minecraft-server-util";
 
 dotenv.config();
 
@@ -10,8 +11,8 @@ const app = express();
 const PORT = Number(process.env.PORT || 3000);
 const products = JSON.parse(fs.readFileSync("./products.json", "utf8"));
 
-// In real production use a database.
-// This is enough for the first test build.
+// Test orders are stored in memory.
+// For real payments, use a database, because deploy/restart clears memory.
 const orders = new Map();
 
 app.use(express.json());
@@ -23,6 +24,10 @@ function validMinecraftNick(name) {
 
 function createOrderId() {
   return crypto.randomBytes(12).toString("hex");
+}
+
+function getBaseUrl(req) {
+  return process.env.PUBLIC_URL || `${req.protocol}://${req.get("host")}`;
 }
 
 async function runMcCommand(command) {
@@ -59,34 +64,49 @@ async function issueProduct(order) {
   order.issuedAt = new Date().toISOString();
 }
 
-app.post("/api/create-order", (req, res) => {
-  const { product, nickname } = req.body || {};
+app.post("/api/create-order", async (req, res) => {
+  const { product, nickname, currency = "UAH" } = req.body || {};
+  const allowedCurrencies = ["UAH", "RUB", "USD"];
 
   if (!products[product]) {
     return res.status(400).json({ error: "Unknown product." });
+  }
+
+  if (!allowedCurrencies.includes(currency)) {
+    return res.status(400).json({ error: "Unknown currency." });
   }
 
   if (!validMinecraftNick(nickname)) {
     return res.status(400).json({ error: "Invalid Minecraft nickname." });
   }
 
+  const selectedProduct = products[product];
+  const price = selectedProduct.prices?.[currency];
+
+  if (typeof price !== "number") {
+    return res.status(400).json({ error: "Price is not configured for this currency." });
+  }
+
   const id = createOrderId();
   const order = {
     id,
     product,
+    productName: selectedProduct.name,
     nickname,
-    price: products[product].price,
+    currency,
+    price,
     status: "created",
     createdAt: new Date().toISOString()
   };
 
   orders.set(id, order);
 
-  // TEST CHECKOUT.
-  // Later replace this with Stripe/PayPal/Przelewy24/PayU payment URL.
-  const paymentUrl = `/checkout-test.html?order=${id}`;
-
-  res.json({ orderId: id, paymentUrl });
+  // For now: styled internal payment page.
+  // Later: replace paymentUrl with Stripe/PayPal checkout session URL.
+  return res.json({
+    orderId: id,
+    paymentUrl: `/payment.html?order=${id}`
+  });
 });
 
 app.get("/api/order/:id", (req, res) => {
@@ -95,18 +115,16 @@ app.get("/api/order/:id", (req, res) => {
 
   res.json({
     ...order,
-    productName: products[order.product]?.name
+    productName: products[order.product]?.name || order.productName
   });
 });
 
-// This imitates successful payment.
-// In production this route must be replaced by a real payment webhook.
 app.post("/api/test-pay/:id", async (req, res) => {
   const order = orders.get(req.params.id);
   if (!order) return res.status(404).json({ error: "Order not found." });
 
   if (order.status === "issued") {
-    return res.json({ ok: true, status: "already issued" });
+    return res.json({ ok: true, order });
   }
 
   order.status = "paid";
@@ -119,11 +137,47 @@ app.post("/api/test-pay/:id", async (req, res) => {
     order.status = "paid_but_issue_failed";
     order.error = String(err.message || err);
     console.error(err);
-    res.status(500).json({ error: "Payment accepted, but issue failed.", details: order.error });
+    res.status(500).json({
+      error: "Payment accepted, but issue failed.",
+      details: order.error
+    });
+  }
+});
+
+// Public status endpoint for website online placeholder.
+// Works through normal Minecraft Server List Ping.
+app.get("/api/server-status", async (req, res) => {
+  const host = process.env.SERVER_HOST || "vanillasmp.space";
+  const port = Number(process.env.SERVER_PORT || 25565);
+
+  try {
+    const result = await status(host, port, {
+      timeout: 5000,
+      enableSRV: true
+    });
+
+    res.json({
+      online: true,
+      host,
+      port,
+      version: result.version?.name || null,
+      playersOnline: result.players?.online ?? 0,
+      playersMax: result.players?.max ?? 0,
+      motd: result.motd?.clean || null
+    });
+  } catch (err) {
+    res.json({
+      online: false,
+      host,
+      port,
+      error: "Server is offline or status ping is blocked."
+    });
   }
 });
 
 app.listen(PORT, () => {
   console.log(`VanillaSMP Store running on http://localhost:${PORT}`);
   console.log(`TEST_MODE=${process.env.TEST_MODE}`);
+  console.log(`SERVER_HOST=${process.env.SERVER_HOST || "vanillasmp.space"}`);
+  console.log(`SERVER_PORT=${process.env.SERVER_PORT || 25565}`);
 });
